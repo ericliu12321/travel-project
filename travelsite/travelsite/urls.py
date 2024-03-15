@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+# Can do this URL config directly in App folder
+from trip_planner import views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('testTemplate/', views.testrenderTemplate)
 ]
