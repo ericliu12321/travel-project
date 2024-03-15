@@ -7,8 +7,9 @@ Overview:
 
 --------------------------------------------------------------------------------
 """
-from .master_views import testrenderTemplate
+from .master_views import testrenderTemplate, renderTravelDetails
 
 __all__ = [
     'testrenderTemplate',
+    'renderTravelDetails',
 ]
