@@ -22,5 +22,6 @@ from trip_planner import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('testTemplate/', views.testrenderTemplate)
+    path('testTemplate/', views.testrenderTemplate),
+    path('testTravelDetails/', views.renderTravelDetails),
 ]
