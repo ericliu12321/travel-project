@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
+from ..models import Trip, TripDay, TripWaypoint
 
 # Create your views here.
 
@@ -35,3 +37,27 @@ def renderTripDay(request):
         ]
     }
     return render(request, 'trip_planner/tripDay.html', context)
+    return render(request, 'trip_planner/travelDetails.html')
+
+def home_view(request):
+    return render(request, 'trip_planner/home.html')
+
+def my_trips(request):
+    # Retrieve the current logged-in user from the request
+    current_user = request.user
+    user_trips = Trip.objects.filter(user=current_user)
+
+    
+    # Pass the current_user to the template context
+    return render(request, 'trip_planner/my_trips.html', context={'user': current_user, 'trips': user_trips})
+
+def trip_view(request, trip_id):
+    trip = get_object_or_404(Trip.objects.filter(id=trip_id))
+
+    return render(request, 'trip_planner/temp_trip_view.html', {'trip': trip})
+
+# def trip_view(request, trip_id):
+#     # Retrieve the trip data along with its related TripDay and TripWaypoint objects
+    # trip_data = get_object_or_404(Trip.objects.prefetch_related('tripday_set__tripwaypoint_set'), id=trip_id)
+
+#     return render(request, 'trip_planner/temp_trip_view.html', {'trip': trip_data})

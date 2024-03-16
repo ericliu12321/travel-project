@@ -1,0 +1,20 @@
+<!-- temp_trip_view.html -->
+{% extends 'main_menu_bar.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3">
+    <h1>{{ trip.trip_name}} Trip Details</h1>
+    <ul>
+        {% for trip_day in trip.tripday_set.all %}
+            <li>Day {{ trip_day.day }}</li>
+            <ul>
+                {% for waypoint in trip_day.tripwaypoint_set.all %}
+                    <li>{{ waypoint.waypoint_name }} <br> Arriving: {{ waypoint.arrival_time }} <br> Departing: {{ waypoint.departure_time }}</li>
+                    <!-- Add additional information here if needed -->
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

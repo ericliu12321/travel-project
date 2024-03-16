@@ -6,6 +6,7 @@ from django.db.models.fields import SlugField
 class Trip(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     trip_name = models.CharField(max_length=100)
+    trip_date = models.DateField()
     days = models.IntegerField()
     created_at = models.DateTimeField(auto_created=True)
     last_modified_at = models.DateTimeField(auto_now_add=True)

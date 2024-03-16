@@ -1,0 +1,29 @@
+<!-- home.html -->
+{% extends 'main_menu_bar.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3">
+    <h1>Welcome to EZGO,<br>{{ user.username|title }}</h1>
+    <p>Your Upcoming Trips</p>
+    {% for trip in trips %}
+    <ul class="list-group">
+        <a href="{% url 'trip_view' trip.id %}">
+            <div class="card">
+                <div class="card-body">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-6">{{ trip.trip_name }}</div>
+                                <div class="col-md-6 text-end">Trip On: {{ trip.trip_date }}<br>Created On: {{ trip.created_at }}</div>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </a>
+        </ul>
+    {% endfor %}
+    <div class="mt-3">
+        <a href="#" class="btn btn-primary">Add Trip</a>
+    </div>
+</div>
+{% endblock %}
