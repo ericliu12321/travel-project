@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+  <style>
+    /* If you want to override bootstrap colors, use "!important" */
+    .bg-lightgreen {
+        background-color: #ccffcc;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="card border border-success bg-lightgreen rounded-5">
+            <div class="card-body">
+                <h5 class="card-title">{{ waypointTitle }}</h5>
+                <p class="card-text">{{ waypointAddress }}</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

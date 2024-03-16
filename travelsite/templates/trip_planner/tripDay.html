@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+  <style>
+    body {
+        padding-top: 20px;
+    }
+    /* If you want to override bootstrap colors, use "!important" */
+    .bg-lightgreen {
+        background-color: #ccffcc;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="container">
+    {% for waypoint in waypoints %}
+        {% with waypoint.waypointTitle as waypointTitle %}
+        {% with waypoint.waypointAddress as waypointAddress %}
+        
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% include './tripStop.html' %}
+            </div>
+        </div>
+
+        {% if not waypoint.isFinal %}
+            {% with waypoint.travelTime as travelTime %}
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        {% include './travelDetails.html' %}
+                    </div>
+                </div>
+            {% endwith %}
+        {% endif %}
+
+        {% endwith %}
+        {% endwith %}
+    {% endfor %}
+    </div>
+
+
+</body>
+</html>

@@ -7,9 +7,11 @@ Overview:
 
 --------------------------------------------------------------------------------
 """
-from .master_views import testrenderTemplate, renderTravelDetails
+from .master_views import testrenderTemplate, renderTravelDetails, renderTripStop, renderTripDay
 
 __all__ = [
     'testrenderTemplate',
     'renderTravelDetails',
+    'renderTripStop',
+    'renderTripDay',
 ]
