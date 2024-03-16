@@ -8,7 +8,7 @@ Notes:
     We need some naming convension for the link names.
 
 Naming Convesion:
-    path: kebab-case
+    path: kebab-case/
     name: snake_case
 --------------------------------------------------------------------------------
 """

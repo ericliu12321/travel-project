@@ -56,8 +56,3 @@ def trip_view(request, trip_id):
 
     return render(request, 'trip_planner/temp_trip_view.html', {'trip': trip})
 
-# def trip_view(request, trip_id):
-#     # Retrieve the trip data along with its related TripDay and TripWaypoint objects
-    # trip_data = get_object_or_404(Trip.objects.prefetch_related('tripday_set__tripwaypoint_set'), id=trip_id)
-
-#     return render(request, 'trip_planner/temp_trip_view.html', {'trip': trip_data})
