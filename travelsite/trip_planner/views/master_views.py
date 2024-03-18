@@ -22,6 +22,7 @@ def renderTripStop(request):
 
 def renderTripDay(request):
     context = {
+        'date': 'March 5th, 2024',
         'waypoints': [
             {
                 'waypointTitle': 'Stop Point 1',
@@ -37,7 +38,6 @@ def renderTripDay(request):
         ]
     }
     return render(request, 'trip_planner/tripDay.html', context)
-    return render(request, 'trip_planner/travelDetails.html')
 
 def home_view(request):
     return render(request, 'trip_planner/home.html')
