@@ -18,14 +18,31 @@ from django.urls import path, include
 from .views import testrenderTemplate, renderTravelDetails, my_trips, home_view, trip_view, logout_view
 
 urlpatterns = [
-    path('', home_view, name='home-view'),
+    # Landing Page
+    path('', lambda temp: temp, name='main'),
+
+    # Home Page (What the user sees when they login)
+    path('home/', home_view, name='home'),
+
+    # Profile/Settings
     path('accounts/', include('django.contrib.auth.urls'), name='login'),
     path('logout/', logout_view, name='logout'),
-    path('accounts/profile/', my_trips, name='my_trips'),
-    path('accounts/profile/trip<int:trip_id>/', trip_view, name='trip_view'),
 
-    path('testTemplate/', testrenderTemplate, name='testrenderTemplate'),
-    path('testTravelDetails/', renderTravelDetails, name='renderTravelDetails'),
-    path('testTripStop/', renderTripStop, name='renderTripStop'),
-    path('testTripDay/', renderTripDay, name='renderTripDay'),
+    # My Trips (Everything that has to do with trips)
+    path('my-trips/', lambda temp: temp, name='my_trips'),
+    path('my-trips/trip<int:trip_id>/', trip_view, name='trip_view'),
+    path('my-trips/trip<int:trip_id>/manage/', trip_view, name='trip_manager'),
+
+    path('test-template/', testrenderTemplate, name='test_template'),
+    path('test-travel-details/', renderTravelDetails, name='test_travel_details'),
+    path('test-trip-stop/', renderTripStop, name='test_trip_stop'),
+    path('test-trip-day/', renderTripDay, name='test_trip_day'),
+
+    # My Memories (Everything that has to do with past trips and photos)
+    path('my-memories/', lambda temp: temp, name='my_memories'),
+    path('my-memories/trip<int:trip_id>/', lambda temp: temp, name='my_memories'),
+
+    # My Friends (Manage Friends and Groups)
+    path('my-friends/', lambda temp: temp, name='my_friends'),
+    path('my-friends/<str:friend_name><int:friend_id>/', lambda temp: temp, name='friend_view'),
 ]
